@@ -4,10 +4,12 @@
 //
 //DESCRIPTION:
 //Declaration of the Moisture Meter
-
+#ifndef MOISTUREMETER_HPP
+#define MOISTUREMETER_HPP
 #include <Arduino.h>
+#include "moistureMeasurement.hpp"
 
-class MoistureMeter
+class moistureMeter
 {
 private:
     //this baseline has to be set by the user, as different output voltages yield different results
@@ -18,16 +20,17 @@ private:
     int m_vin{0};
     //the analog read pin to get measurements
     int m_aout{0};
-
     //sets the output of m_vin to wither high or low, depending on active
     void toggleVin(bool active);
 
 public:
-    MoistureMeter(int sensorVin, int sensorOut, int moistureMaxBaseline);
-    ~MoistureMeter();
+    moistureMeasurement m_last_measurement{0, 0};
+
+    moistureMeter(int sensorVin, int sensorOut, int moistureMaxBaseline);
+    ~moistureMeter();
     //returns the raw moisture value returned by the sensor
-    int measureMoisture();
+    moistureMeasurement measureMoisture();
     void printConfig();
     void setBaseline(int new_baseline);
-    float measureMoisturePercentage();
 };
+#endif

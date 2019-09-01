@@ -1,6 +1,13 @@
-#include "MoistureMeter.hpp"
+//AUTHOR:
+//umiko(https://github.com/umiko)
+//Permission to copy and modify is granted under the MIT license
+//
+//DESCRIPTION:
+//A small test application to test the classes
 
-MoistureMeter m = {2, A0, 700};
+#include "moistureMeter.hpp"
+
+moistureMeter m = {2, A0, 700};
 
 void setup()
 {
@@ -13,12 +20,6 @@ void setup()
 void loop()
 {
   // read the input
-  int sensorValue = m.measureMoisture();
-  float percentage = m.measureMoisturePercentage();
-  // print out the value you read:
-  Serial.print("Raw Value: ");
-  Serial.print(sensorValue);
-  Serial.print(" Normalized: ");
-  Serial.println(percentage);
+  m.measureMoisture().print();
   delay(10000); // delay in between reads for stability
 }
