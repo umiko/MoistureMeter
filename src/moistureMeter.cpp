@@ -5,7 +5,7 @@
 //DESCRIPTION:
 //Implementation of the moisture meter
 
-#include "MoistureMeter.hpp"
+#include "moistureMeter.hpp"
 
 moistureMeter::moistureMeter(int sensorVinPin, int sensorOutPin, int moistureMaxBaseline) : m_vin(sensorVinPin), m_aout(sensorOutPin), m_baseline_water(moistureMaxBaseline), m_baseline_updated(moistureMaxBaseline)
 {
@@ -22,9 +22,9 @@ moistureMeasurement moistureMeter::measureMoisture()
 {
     int result = 0;
     toggleVin(true);
-    delay(100);
+    delay(10);
     result = analogRead(m_aout);
-    delay(100);
+    delay(10);
     toggleVin(false);
     if (m_baseline_water < result && m_baseline_updated < result)
         setBaseline(result);

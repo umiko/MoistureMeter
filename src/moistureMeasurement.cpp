@@ -29,6 +29,6 @@ void moistureMeasurement::print()
     Serial.print("Moisture Percentage");
     Serial.println(getMoistureInPercentage());
     Serial.print("Measured at: ");
-    Serial.println(m_measuredAt);
+    Serial.println(static_cast<int>(m_measuredAt));
   }
 }
