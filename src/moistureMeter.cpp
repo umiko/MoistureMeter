@@ -20,12 +20,17 @@ moistureMeter::~moistureMeter()
 //supplies voltage to the sensor and measures the conductivity
 moistureMeasurement moistureMeter::measureMoisture()
 {
-    int result = 0;
+    int resultSet[SAMPLE_SIZE] = {0};
     toggleVin(true);
-    delay(10);
-    result = analogRead(m_aout);
-    delay(10);
+
+    for (int i = 0; i < SAMPLE_SIZE; i++)
+    {
+        delay(10);
+        resultSet[i] = analogRead(m_aout);
+    }
     toggleVin(false);
+    int result = std::accumulate(resultSet[0], resultSet[99], 0) / SAMPLE_SIZE;
+
     if (m_baseline_water < result && m_baseline_updated < result)
         setBaseline(result);
     m_last_measurement = {result, m_baseline_updated};
