@@ -7,7 +7,7 @@
 
 #include "moistureMeter.hpp"
 
-moistureMeter m = {2, A0, 700};
+moistureMeter m = {2, A7, 0};
 
 void setup()
 {
@@ -21,5 +21,5 @@ void loop()
 {
   // read the input
   m.measureMoisture().print();
-  delay(10000); // delay in between reads for stability
+  delay(4000); // delay in between reads for stability
 }
