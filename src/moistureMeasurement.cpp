@@ -7,7 +7,7 @@
 
 #include "moistureMeasurement.hpp"
 
-moistureMeasurement::moistureMeasurement(int rawValue, int baseline) : m_measuredAt(now()), m_rawValue(rawValue), m_baseline(baseline)
+moistureMeasurement::moistureMeasurement(int rawValue, int baseline) : m_rawValue(rawValue), m_baseline(baseline)
 {
 }
 
@@ -28,7 +28,5 @@ void moistureMeasurement::print()
     Serial.println(m_rawValue);
     Serial.print("Moisture Percentage");
     Serial.println(getMoistureInPercentage());
-    Serial.print("Measured at: ");
-    Serial.println(static_cast<int>(m_measuredAt));
   }
 }
