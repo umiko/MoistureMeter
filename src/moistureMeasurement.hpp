@@ -10,7 +10,9 @@
 
 class moistureMeasurement
 {
+private:
 public:
+  static int m_measurement_count;
   int m_rawValue{0};
   int m_baseline{0};
   moistureMeasurement(int rawValue, int baseline);
@@ -18,4 +20,5 @@ public:
   float getMoistureInPercentage();
   void print();
 };
+
 #endif

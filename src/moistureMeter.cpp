@@ -21,19 +21,24 @@ moistureMeter::~moistureMeter()
 moistureMeasurement moistureMeter::measureMoisture()
 {
     int result = 0;
-    toggleVin(true);
 
     for (int i = 0; i < SAMPLE_SIZE; i++)
     {
+        toggleVin(true);
+
         delay(10);
         result += analogRead(m_aout);
+        toggleVin(false);
+        delay(10);
     }
-    toggleVin(false);
-    result = result / SAMPLE_SIZE;
 
-    if (m_baseline_water < result && m_baseline_updated < result)
-        setBaseline(result);
-    m_last_measurement = {result, m_baseline_updated};
+    float avg = static_cast<float>(result) / static_cast<float>(SAMPLE_SIZE);
+
+    Serial.println(avg);
+
+    if (m_baseline_water < avg && m_baseline_updated < avg)
+        setBaseline(avg);
+    m_last_measurement = {avg, m_baseline_updated};
     return m_last_measurement;
 }
 

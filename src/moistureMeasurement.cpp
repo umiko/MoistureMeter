@@ -7,8 +7,11 @@
 
 #include "moistureMeasurement.hpp"
 
+int moistureMeasurement::m_measurement_count = 0;
+
 moistureMeasurement::moistureMeasurement(int rawValue, int baseline) : m_rawValue(rawValue), m_baseline(baseline)
 {
+  m_measurement_count++;
 }
 
 moistureMeasurement::~moistureMeasurement()
@@ -24,9 +27,11 @@ void moistureMeasurement::print()
 {
   if (Serial)
   {
+    Serial.print("Measurement ");
+    Serial.println(m_measurement_count);
     Serial.print("Raw Value: ");
     Serial.println(m_rawValue);
-    Serial.print("Moisture Percentage");
+    Serial.print("Moisture Percentage: ");
     Serial.println(getMoistureInPercentage());
   }
 }

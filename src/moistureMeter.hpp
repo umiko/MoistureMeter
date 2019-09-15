@@ -6,11 +6,10 @@
 //Declaration of the Moisture Meter
 #ifndef MOISTUREMETER_HPP
 #define MOISTUREMETER_HPP
-#include <numeric>
 #include <Arduino.h>
 #include "moistureMeasurement.hpp"
 
-const int SAMPLE_SIZE = 100;
+const int SAMPLE_SIZE = 500;
 
 class moistureMeter
 {
