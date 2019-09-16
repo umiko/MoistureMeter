@@ -17,7 +17,7 @@ moistureMeter::~moistureMeter()
 {
 }
 
-//supplies voltage to the sensor and measures the conductivity
+//supplies voltage to the sensor and measures the conductivity. The measuring process takes 20ms times SAMPLE_SIZE
 moistureMeasurement moistureMeter::measureMoisture()
 {
     int result = 0;
