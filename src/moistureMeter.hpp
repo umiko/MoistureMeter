@@ -27,7 +27,7 @@ private:
 
 public:
     moistureMeasurement m_last_measurement{0, 0};
-
+    moistureMeter();
     moistureMeter(int sensorVin, int sensorOut, int moistureMaxBaseline);
     ~moistureMeter();
     //returns the raw moisture value returned by the sensor

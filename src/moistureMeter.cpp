@@ -7,6 +7,10 @@
 
 #include "moistureMeter.hpp"
 
+moistureMeter::moistureMeter()
+{
+}
+
 moistureMeter::moistureMeter(int sensorVinPin, int sensorOutPin, int moistureMaxBaseline) : m_vin(sensorVinPin), m_aout(sensorOutPin), m_baseline_water(moistureMaxBaseline), m_baseline_updated(moistureMaxBaseline)
 {
     pinMode(sensorVinPin, OUTPUT);
@@ -34,11 +38,11 @@ moistureMeasurement moistureMeter::measureMoisture()
 
     float avg = static_cast<float>(result) / static_cast<float>(SAMPLE_SIZE);
 
-    Serial.println(avg);
-
     if (m_baseline_water < avg && m_baseline_updated < avg)
         setBaseline(avg);
+
     m_last_measurement = {avg, m_baseline_updated};
+
     return m_last_measurement;
 }
 

@@ -9,6 +9,10 @@
 
 int moistureMeasurement::m_measurement_count = 0;
 
+moistureMeasurement::moistureMeasurement() : m_rawValue(0), m_baseline(0)
+{
+}
+
 moistureMeasurement::moistureMeasurement(int rawValue, int baseline) : m_rawValue(rawValue), m_baseline(baseline)
 {
   m_measurement_count++;
@@ -27,8 +31,9 @@ void moistureMeasurement::print()
 {
   if (Serial)
   {
-    Serial.print("Measurement ");
-    Serial.println(m_measurement_count);
+    Serial.print("##### Measurement ");
+    Serial.print(m_measurement_count);
+    Serial.println(" #####");
     Serial.print("Raw Value: ");
     Serial.println(m_rawValue);
     Serial.print("Moisture Percentage: ");
